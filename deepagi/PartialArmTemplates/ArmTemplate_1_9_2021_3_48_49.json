@@ -6,37 +6,12 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "deepagi"
-		},
-		"AzureFunction_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction'"
-		},
-		"AzureFunction_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://deepagi.azurewebsites.net"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction_functionKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -58,7 +33,6 @@
 						"typeProperties": {
 							"functionName": "extract",
 							"method": "GET",
-							"headers": {},
 							"body": {
 								"body": ""
 							}
@@ -71,9 +45,7 @@
 				],
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureFunction')]"
-			]
+			"dependsOn": []
 		}
 	]
 }

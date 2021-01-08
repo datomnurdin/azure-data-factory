@@ -40,7 +40,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"functionName": "extract",
-							"method": "POST",
+							"method": "GET",
 							"headers": {},
 							"body": {
 								"body": ""
