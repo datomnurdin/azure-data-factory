@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"functionName": "extract",
-					"method": "POST",
+					"method": "GET",
 					"body": {
 						"body": ""
 					}
