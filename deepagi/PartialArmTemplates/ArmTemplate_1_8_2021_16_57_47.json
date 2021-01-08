@@ -6,14 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "deepagi"
-		},
-		"AzureFunction_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction'"
-		},
-		"AzureFunction_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://deepagi.azurewebsites.net"
 		}
 	},
 	"variables": {
@@ -41,7 +33,6 @@
 						"typeProperties": {
 							"functionName": "extract",
 							"method": "POST",
-							"headers": {},
 							"body": {
 								"body": ""
 							}
@@ -53,25 +44,6 @@
 					}
 				],
 				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureFunction')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction_functionKey')]"
-					}
-				}
 			},
 			"dependsOn": []
 		}

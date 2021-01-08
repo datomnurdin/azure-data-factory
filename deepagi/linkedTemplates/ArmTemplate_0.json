@@ -57,8 +57,11 @@
 						"userProperties": [],
 						"typeProperties": {
 							"functionName": "extract",
-							"method": "GET",
-							"headers": {}
+							"method": "POST",
+							"headers": {},
+							"body": {
+								"body": ""
+							}
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureFunction",
